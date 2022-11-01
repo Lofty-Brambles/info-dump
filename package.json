@@ -1,0 +1,48 @@
+{
+	"name": "@example/basics",
+	"type": "module",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"preinstall": "npx only-allow pnpm",
+		"dev": "astro dev",
+		"start": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"astro": "astro",
+		"commit": "cty",
+		"lint": "prettier -w --plugin-search-dir=. .",
+		"prepare": "husky install"
+	},
+	"dependencies": {
+		"@astrojs/mdx": "^0.11.4",
+		"@astrojs/prefetch": "^0.1.0",
+		"@astrojs/rss": "^1.0.3",
+		"@astrojs/sitemap": "^1.0.0",
+		"@astrojs/svelte": "^1.0.1",
+		"astro": "^1.4.6",
+		"astro-compress": "^1.1.1",
+		"astro-seo": "^0.6.0",
+		"dotenv": "^16.0.3",
+		"svelte": "^3.46.4"
+	},
+	"lint-staged": {
+		"src/**/*.astro": [
+			"prettier -w --plugin-search-dir=. ."
+		],
+		"src/**/*.svelte": [
+			"prettier -w --plugin-search-dir=. ."
+		],
+		"src/**/*.ts": [
+			"prettier -w"
+		]
+	},
+	"devDependencies": {
+		"cty": "^1.0.3",
+		"husky": "^8.0.0",
+		"lint-staged": "^13.0.3",
+		"prettier": "^2.7.1",
+		"prettier-plugin-astro": "^0.5.5",
+		"prettier-plugin-svelte": "^2.7.1"
+	}
+}
