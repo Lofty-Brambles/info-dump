@@ -1,0 +1,90 @@
+---
+import { SEO } from "astro-seo";
+import { websiteURLs, blogDetails } from "@config";
+
+interface Props {
+	descripion?: string;
+	opgTitle?: string;
+	opgType?: string;
+	opgImage?: {
+		url: string;
+		alt: string;
+		type: string;
+		width: number;
+		height: number;
+	};
+	opgLocal?: string;
+	opgArticleInfo?: {
+		published?: string;
+		updated?: string;
+		authors?: string[];
+		tags?: string[];
+	};
+}
+
+const {
+	description = blogDetails.description,
+	opgTitle = blogDetails.name,
+	opgType = "website",
+	opgImage = {
+		url: `${websiteURLs.prod}favicon.svg`,
+		alt: `Image showing the logo of ${blogDetails.name}`,
+		type: "image/svg",
+		width: 512,
+		height: 512,
+	},
+	opgLocal = "en_UK",
+	opgArticleInfo = {
+		author: blogDetails.author,
+	},
+} = Astro.props;
+
+const renameKey = (key: string) => {
+	switch (key) {
+		case "published":
+			return "publishedTime";
+		case "updated":
+			return "modifiedTime";
+		default:
+			return key;
+	}
+};
+
+interface ArticleObject {
+	publishedTime?: string;
+	modifiedTime?: string;
+	expirationTime?: string;
+	authors?: string[];
+	section?: string;
+	tags?: string[];
+}
+
+const articleObject: ArticleObject = Object.fromEntries(
+	Object.entries(opgArticleInfo).map(ele => [renameKey(ele[0]), ele[1]])
+);
+---
+
+<SEO
+	description={description}
+	openGraph={{
+		basic: {
+			title: opgTitle,
+			type: opgType,
+			image: opgImage.url,
+		},
+		optional: {
+			description,
+			locale: opgLocal,
+		},
+		image: {
+			type: opgImage.type,
+			alt: opgImage.alt,
+			width: opgImage.width,
+			height: opgImage.height,
+		},
+		article: articleObject,
+	}}
+	twitter={{
+		card: "summary",
+	}}
+/>

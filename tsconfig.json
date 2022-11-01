@@ -1,0 +1,24 @@
+{
+	"extends": "astro/tsconfigs/strictest",
+	"compilerOptions": {
+		"moduleResolution": "Node",
+		"module": "ESNext",
+		"lib": ["DOM", "ES2022"],
+		"target": "ES2020",
+
+		"forceConsistentCasingInFileNames": true,
+		"isolatedModules": true,
+		"importsNotUsedAsValues": "error",
+
+		"baseUrl": ".",
+		"paths": {
+			"@components/*": ["src/components/*"],
+			"@config": ["src/config"],
+			"@layouts/*": ["src/layouts/*"],
+			"@pages/*": ["src/pages/*"],
+			"@utils/*": ["src/utils/*"],
+			"@public/*": ["public/*"]
+		}
+	},
+	"include": ["**/*.astro", "**/*.svelte", "**/*.ts", "**/*.d.ts"]
+}
