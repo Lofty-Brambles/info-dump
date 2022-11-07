@@ -5,8 +5,12 @@ export interface FrontmatterType {
 	description: string;
 	authors: string[];
 	tags: string[];
-	published: string;
-	updated: string;
+	published: number;
+	updated: number;
+	cover: {
+		link: string;
+		alt: string;
+	};
 }
 
 export type Post = MarkdownInstance<FrontmatterType>;

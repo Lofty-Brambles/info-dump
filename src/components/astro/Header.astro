@@ -1,99 +1,77 @@
 ---
+import SearchBar from "@components/svelte/SearchBar.svelte";
 import { blogDetails } from "@config";
 ---
 
 <header>
 	<a href={Astro.url.host}>
-		<img src="./favicon.svg" alt="logo" width="48" height="48" />
+		<img src="./favicon.gif" alt="logo" width="64" height="64" />
 		<span>{blogDetails.name}</span>
 	</a>
-	<div>
-		<button>
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				width="1.5rem"
-				height="1.5rem"
-				preserveAspectRatio="xMidYMid meet"
-				viewBox="0 0 24 24"
-				><path
-					fill="#eee"
-					d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5A6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5S14 7.01 14 9.5S11.99 14 9.5 14z"
-				></path>
-			</svg>
-			Search
-		</button>
-		<button>
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				width="1.5rem"
-				height="1.5rem"
-				preserveAspectRatio="xMidYMid meet"
-				viewBox="0 0 24 24"
-				><path
-					fill="#eee"
-					d="M19.14 12.94c.04-.3.06-.61.06-.94c0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.488.488 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6s3.6 1.62 3.6 3.6s-1.62 3.6-3.6 3.6z"
-				></path>
-			</svg>
-			View Settings
-		</button>
-	</div>
-	<button>
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			width="1.5rem"
-			height="1.5rem"
-			preserveAspectRatio="xMidYMid meet"
-			viewBox="0 0 24 24"
-			><path
-				fill="#eee"
-				d="M9 2h9c1.1 0 2 .9 2 2v16c0 1.1-.9 2-2 2H9c-1.1 0-2-.9-2-2v-2h2v2h9V4H9v2H7V4c0-1.1.9-2 2-2z"
-			></path><path
-				fill="#eee"
-				d="M10.09 15.59L11.5 17l5-5l-5-5l-1.41 1.41L12.67 11H3v2h9.67z"
-			></path>
-		</svg>
-		Sign In
-	</button>
+	<SearchBar client:idle />
 </header>
 
 <style lang="scss">
 	header {
-		box-sizing: border-box;
-		padding: 1rem 2rem 0 2rem;
-		width: 100%;
+		position: relative;
+		margin: 1rem 2rem 0 2rem;
+		padding: 0.5rem;
+		border: 1px var(--elementary) solid;
+		border-radius: 0.5rem;
+		width: calc(100% - 4rem);
 
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-around;
 		align-items: center;
+		background-color: var(--background-lite);
 
-		& > * {
-			margin: 0.25rem 1rem;
+		&::after {
+			content: "";
+			position: absolute;
+			left: 0.25rem;
+			top: 0.25rem;
+			z-index: -1;
+
+			width: 100%;
+			height: 100%;
+			border-radius: 0.5rem;
+			background-color: var(--elementary);
 		}
 
 		& > a {
 			display: flex;
 			gap: 1rem;
 			align-items: center;
+			padding: 0.1rem 0.4rem;
+			margin: 0 1rem;
 
 			font-family: "Titan";
 			font-size: 1.75rem;
-			color: #000;
+			color: var(--elementary);
 			text-decoration: none;
+
+			&:focus {
+				outline: 0.2rem var(--elementary) solid;
+			}
+
+			& > img {
+				width: 4rem;
+				height: 4rem;
+			}
 		}
+	}
 
-		& > div {
-			height: 100%;
-			display: flex;
-			gap: 0.2rem;
+	@media (max-width: 365px) {
+		header {
+			& > a {
+				font-size: 1.25rem;
+				margin: 0 1rem;
 
-			& button {
-				display: flex;
-				flex-wrap: wrap;
-				justify-content: space-around;
-				align-items: center;
-
-				border: none;
+				& > img {
+					width: 2.5rem;
+					height: 2.5rem;
+				}
 			}
 		}
 	}
