@@ -1,10 +1,116 @@
 ---
+import { getPostUrl } from "@lib/scripts/get-post-url";
+
+import type { Post } from "@lib/types/Post";
+interface Props {
+	item: Post;
+}
+
+const { item } = Astro.props;
 ---
 
-<article></article>
+<article>
+	<a href={getPostUrl(item)}>
+		<h2>
+			<mark>{item.frontmatter.title}</mark>
+		</h2>
+		<p>{item.frontmatter.description}</p>
+	</a>
+</article>
 
-<style lang="scss">
+<style lang="scss" define:vars={{ bgImg: `url(${item.frontmatter.cover.url})` }}
+>
 	article {
-		
+		box-sizing: border-box;
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+
+		width: 75vw;
+		max-width: 800px;
+		aspect-ratio: 16/9;
+
+		margin-top: 2.5rem;
+		padding: 1rem;
+		border: 1px var(--elementary) solid;
+		border-radius: 0.5rem;
+
+		background-image: var(--bgImg);
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
+
+		&::before {
+			content: "";
+			position: absolute;
+			left: 0;
+			top: 0;
+			z-index: 1;
+
+			width: 100%;
+			height: 100%;
+			border-radius: 0.5rem;
+			background: linear-gradient(
+				180deg,
+				rgba(0, 0, 0, 0.1),
+				rgba(0, 0, 0, 0.9)
+			);
+		}
+	}
+
+	@media (max-width: 450px) {
+		article {
+			width: calc(100% - 2rem);
+		}
+	}
+
+	a {
+		z-index: 2;
+		margin: 0 0.5rem;
+		width: 80%;
+		text-decoration: none;
+	}
+
+	@media (max-width: 500px) {
+		a {
+			width: calc(100% - 1rem);
+		}
+	}
+
+	h2 > mark {
+		width: fit-content;
+		margin: 0 0 0.25rem 0;
+		padding: 0.25rem 0;
+		position: relative;
+
+		font-size: var(--font-1);
+		font-family: var(--serif);
+		color: #fff;
+		text-decoration: none;
+
+		background: linear-gradient(
+				120deg,
+				var(--foreground) 0%,
+				var(--secondary) 100%
+			)
+			bottom / 100% 0.2em no-repeat;
+		transition: background-size 0.25s ease-in;
+
+		&:hover {
+			background-size: 100% 88%;
+		}
+	}
+
+	p {
+		font-size: var(--font--1);
+		font-family: var(--sans-serif);
+
+		color: #fff;
+		text-decoration-color: #fff;
+
+		&:hover {
+			text-decoration: underline;
+		}
 	}
 </style>

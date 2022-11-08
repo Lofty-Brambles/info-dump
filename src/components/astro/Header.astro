@@ -12,6 +12,9 @@ import { blogDetails } from "@config";
 </header>
 
 <style lang="scss">
+	@use "src/lib/styles-addn/func" as f;
+	@use "src/lib/styles-addn/vars" as v;
+
 	header {
 		position: relative;
 		margin: 1rem 2rem 0 2rem;
@@ -20,33 +23,17 @@ import { blogDetails } from "@config";
 		border-radius: 0.5rem;
 		width: calc(100% - 4rem);
 
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-around;
-		align-items: center;
+		@include f.flex(row, space-around, center, wrap);
 		background-color: var(--background-lite);
 
-		&::after {
-			content: "";
-			position: absolute;
-			left: 0.25rem;
-			top: 0.25rem;
-			z-index: -1;
-
-			width: 100%;
-			height: 100%;
-			border-radius: 0.5rem;
-			background-color: var(--elementary);
-		}
+		@include f.deferred-bg();
 
 		& > a {
-			display: flex;
-			gap: 1rem;
-			align-items: center;
+			@include f.flex($alg-it: center, $gap: 1rem);
 			padding: 0.1rem 0.4rem;
 			margin: 0 1rem;
 
-			font-family: "Titan";
+			font-family: v.$titan;
 			font-size: 1.75rem;
 			color: var(--elementary);
 			text-decoration: none;
@@ -56,21 +43,19 @@ import { blogDetails } from "@config";
 			}
 
 			& > img {
-				width: 4rem;
-				height: 4rem;
+				@include f.box(4rem);
 			}
 		}
 	}
 
-	@media (max-width: 365px) {
+	@include f.mq(sm, max) {
 		header {
 			& > a {
 				font-size: 1.25rem;
 				margin: 0 1rem;
 
 				& > img {
-					width: 2.5rem;
-					height: 2.5rem;
+					@include f.box(2.5rem);
 				}
 			}
 		}

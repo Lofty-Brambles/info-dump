@@ -18,7 +18,7 @@ const { title } = Astro.props;
 	</head>
 	<body>
 		<slot />
-		<style lang="scss">
+		<style>
 			/* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -150,33 +150,29 @@ const { title } = Astro.props;
 			}
 		</style>
 		<style lang="scss">
-			:root {
-				--elementary: #000000;
-				--elementary-lite: rgba(0, 0, 0, 0.4);
-				--anti-elementary: #ffffff;
-				--foreground: #2ecf75;
-				--background: #d8e4dc;
-				--background-lite: #e9f5ed;
-				--primary: #00263a;
-				--secondary: #375ca9;
+			@use "src/lib/styles-addn/func" as f;
+			@use "src/lib/styles-addn/vars" as v;
 
-				--sans-serif: -apple-system, BlinkMacSystemFont, avenir next,
-					avenir, segoe ui, helvetica neue, helvetica, Cantarell,
-					Ubuntu, roboto, noto, arial, sans-serif;
-				--serif: Iowan Old Style, Apple Garamond, Baskerville,
-					Times New Roman, Droid Serif, Times, Source Serif Pro, serif,
-					Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+			:root {
+				--elementary: v.$black;
+				--elementary-lite: v.$faded-black;
+				--anti-elementary: v.$white;
+				--foreground: v.$cyan;
+				--background: v.$light-cyan;
+				--background-lite: v.$lightest-cyan;
+				--primary: v.$dark-blue;
+				--secondary: v.$blue;
 			}
 
 			html.dark {
-				--elementary: #ffffff;
-				--elementary-lite: rgba(256, 256, 256, 0.4);
-				--anti-elementary: #000000;
-				--foreground: #583599;
-				--background: #150a33;
-				--background-lite: #27184d;
-				--primary: #1f6feb;
-				--secondary: #5b92f8;
+				--elementary: v.$white;
+				--elementary-lite: v.$faded-white;
+				--anti-elementary: v.$black;
+				--foreground: v.$light-purple;
+				--background: v.$dark-purple;
+				--background-lite: v.$purple;
+				--primary: v.$light-blue;
+				--secondary: v.$lightest-blue;
 			}
 
 			html.justify * {
@@ -189,9 +185,7 @@ const { title } = Astro.props;
 			}
 
 			body {
-				display: flex;
-				flex-direction: column;
-				align-items: center;
+				@include f.flex(column, flex-start, center);
 				background-color: var(--background);
 			}
 		</style>
