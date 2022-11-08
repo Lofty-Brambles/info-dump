@@ -8,7 +8,7 @@ export interface FrontmatterType {
 	published: number;
 	updated: number;
 	cover: {
-		link: string;
+		url: string;
 		alt: string;
 	};
 }

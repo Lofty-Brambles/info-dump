@@ -3,8 +3,13 @@ import { config } from "dotenv";
 config();
 
 export const websiteURLs = {
-	dev: process.env.DEV_WEBSITE_URL?.trim() || "http://localhost:3000/",
+	dev:
+		process.env.DEV_WEBSITE_URL?.trim().replace(/\/$/g, "") ||
+		"http://localhost:3000",
 	prod: (process.env.PROD_WEBSITE_URL as string).trim().replace(/\/$/g, ""),
+	current() {
+		return import.meta.env.DEV ? this.dev : this.prod;
+	},
 };
 
 export const blogDetails = {
