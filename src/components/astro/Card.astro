@@ -7,13 +7,126 @@ interface Props {
 }
 
 const { item } = Astro.props;
+const inf = item.frontmatter;
 ---
 
-<article>
-	<a href={getPostUrl(item)}>
-		<img
-			src={item.frontmatter.cover.url}
-			alt={item.frontmatter.cover.alt}
-		/>
-	</a>
-</article>
+<li>
+	<figure>
+		<figcaption>
+			<ul class="pills">{inf.tags.map(v => <li>{v}</li>)}</ul>
+			<h2>{inf.title}</h2>
+			<p>{inf.description}</p>
+		</figcaption>
+		<a href={getPostUrl(item)}>
+			<img src={inf.cover.url} alt={inf.cover.alt} />
+		</a>
+	</figure>
+</li>
+
+<style lang="scss">
+	@use "src/lib/styles-addn/vars" as v;
+	@use "src/lib/styles-addn/func" as f;
+	@use "src/lib/styles-addn/keyframes" as k;
+	@include k.add-bobble();
+	@include k.restore-bobble();
+
+	li {
+		box-sizing: border-box;
+		height: 100%;
+		margin: 1.25rem !important;
+		padding: 0;
+
+		width: calc(33% - 40px);
+		text-decoration: none;
+
+		&:not(.static):hover figure {
+			animation: shrink 1s linear both;
+		}
+	}
+
+	@include f.mq(xl, max) {
+		li {
+			width: calc(50% - 40px);
+		}
+	}
+
+	@include f.mq(lg, max) {
+		li {
+			width: 100%;
+			margin: 15px 0 !important;
+		}
+	}
+
+	figure {
+		@include f.flex(column);
+		@include f.box(calc(100% - 2px));
+
+		box-sizing: border-box;
+		margin: 0;
+		background-color: var(--background-lite);
+
+		border-radius: 1rem;
+		border: 1px solid var(--elementary);
+		box-shadow: 0 1px 5px 0 var(--elementary-lite);
+
+		&:not(.static) {
+			@include k.add-bobble();
+			animation: restore 1s linear both;
+		}
+
+		& figcaption {
+			padding: 1.5rem 1.25rem 0 1.25rem;
+		}
+
+		& a {
+			width: 100%;
+		}
+
+		& img {
+			@include f.box(100%);
+			aspect-ratio: 16/9;
+			border-radius: 0 0 1rem 1rem;
+		}
+	}
+
+	ul.pills {
+		@include f.flex($just-cont: flex-start, $wrp: wrap, $gap: 1rem);
+		list-style-type: none;
+		padding-left: 0;
+		margin-bottom: 1rem;
+
+		& li {
+			width: fit-content;
+			padding: 0.5rem 1.25rem;
+			margin: 0 !important;
+			border-radius: 0.75rem;
+
+			color: var(--elementary);
+			background-color: var(--foreground);
+
+			text-transform: uppercase;
+			font-family: v.$sans-serif;
+			font-weight: 500;
+		}
+	}
+
+	h2 {
+		margin: 0;
+		font-family: v.$titan;
+		letter-spacing: 0.75px;
+	}
+
+	p {
+		margin: 1rem 0;
+		font-family: v.$sans-serif;
+		font-size: v.$font--1;
+		line-height: normal;
+	}
+
+	@media (prefers-reduced-motion) {
+		li,
+		figure {
+			animation: none !important;
+		}
+	}
+</style>

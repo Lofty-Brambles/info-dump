@@ -154,25 +154,25 @@ const { title } = Astro.props;
 			@use "src/lib/styles-addn/vars" as v;
 
 			:root {
-				--elementary: v.$black;
-				--elementary-lite: v.$faded-black;
-				--anti-elementary: v.$white;
-				--foreground: v.$cyan;
-				--background: v.$light-cyan;
-				--background-lite: v.$lightest-cyan;
-				--primary: v.$dark-blue;
-				--secondary: v.$blue;
+				--elementary: #{v.$black};
+				--elementary-lite: #{v.$faded-black};
+				--anti-elementary: #{v.$white};
+				--foreground: #{v.$cyan};
+				--background: #{v.$light-cyan};
+				--background-lite: #{v.$lightest-cyan};
+				--primary: #{v.$dark-blue};
+				--secondary: #{v.$blue};
 			}
 
 			html.dark {
-				--elementary: v.$white;
-				--elementary-lite: v.$faded-white;
-				--anti-elementary: v.$black;
-				--foreground: v.$light-purple;
-				--background: v.$dark-purple;
-				--background-lite: v.$purple;
-				--primary: v.$light-blue;
-				--secondary: v.$lightest-blue;
+				--elementary: #{v.$white};
+				--elementary-lite: #{v.$faded-white};
+				--anti-elementary: #{v.$black};
+				--foreground: #{v.$light-purple};
+				--background: #{v.$dark-purple};
+				--background-lite: #{v.$purple};
+				--primary: #{v.$light-blue};
+				--secondary: #{v.$lightest-blue};
 			}
 
 			html.justify * {

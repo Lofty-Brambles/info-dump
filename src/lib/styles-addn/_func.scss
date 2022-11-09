@@ -5,6 +5,7 @@
 */
 
 @use "src/lib/styles-addn/vars" as v;
+@use "src/lib/styles-addn/keyframes" as k;
 
 @mixin mq($name, $type: min) {
 	$min: map-get($map: v.$breakpoints, $key: $name);
@@ -37,8 +38,8 @@
 	height: $height;
 }
 
-@mixin deferred-bg($prefix: &) {
-	#{$prefix}::after {
+@mixin deferred-bg() {
+	&::after {
 		content: "";
 		position: absolute;
 		left: 0.25rem;
