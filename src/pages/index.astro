@@ -2,7 +2,6 @@
 import Layout from "@layouts/Layout.astro";
 import SEO from "@components/astro/SEO.astro";
 import Header from "@components/astro/Header.astro";
-import MainCard from "@components/astro/MainCard.astro";
 import Card from "@components/astro/Card.astro";
 
 import type { Post } from "@lib/types/Post";
@@ -14,6 +13,35 @@ posts.sort((a, b) => b.frontmatter.published - a.frontmatter.published);
 <Layout title="test">
 	<SEO slot="SEO" />
 	<Header />
-	<MainCard item={posts[0]!} />
-	<Card item={posts[0]!} />
+
+	<main>
+		<ol>
+			{posts.map(v => <Card item={v} />)}
+		</ol>
+	</main>
 </Layout>
+
+<style lang="scss">
+	@use "src/lib/styles-addn/func" as f;
+	@use "src/lib/styles-addn/vars" as v;
+
+	main {
+		box-sizing: border-box;
+		width: 100%;
+		margin-bottom: 2rem;
+		padding: 0 2rem;
+	}
+
+	ol {
+		@include f.flex($wrp: wrap);
+		list-style: none;
+		margin: 1rem 0;
+		padding: 0;
+	}
+
+	@include f.mq(xl) {
+		main {
+			width: 1140px;
+		}
+	}
+</style>
