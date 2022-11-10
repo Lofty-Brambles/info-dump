@@ -67,7 +67,6 @@ const inf = item.frontmatter;
 
 		border-radius: 1rem;
 		border: 1px solid var(--elementary);
-		box-shadow: 0 1px 5px 0 var(--elementary-lite);
 
 		&:not(.static) {
 			@include k.add-bobble();
@@ -79,7 +78,8 @@ const inf = item.frontmatter;
 		}
 
 		& a {
-			width: 100%;
+			@include f.box(100%);
+			border-top: 1px solid var(--elementary);
 		}
 
 		& img {
