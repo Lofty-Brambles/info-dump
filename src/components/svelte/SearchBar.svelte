@@ -5,11 +5,18 @@
 </script>
 
 <form autocomplete="on" on:submit|preventDefault={handleSearch}>
-	<input type="text" name="search-bar" id="search bar" />
+	<input
+		aria-label="search-bar input field"
+		type="text"
+		name="search-bar"
+		id="search bar"
+	/>
 	<button type="submit">Submit</button>
 </form>
 
 <style lang="scss">
+	@use "src/lib/styles-addn/func" as f;
+
 	form {
 		position: relative;
 		display: flex;
@@ -35,19 +42,15 @@
 	}
 
 	button {
-		box-sizing: border-box;
-		display: flex;
-		align-self: center;
-		gap: 0.25rem;
-		box-shadow: var(--elementary-lite) 0.6rem 0.875rem 0.35rem -0.3rem;
-
 		position: absolute;
 		left: calc(100% - 2.5rem);
+		box-sizing: border-box;
+		@include f.flex($gap: 0.25rem);
+		align-self: center;
+		box-shadow: var(--elementary-lite) 0.6rem 0.875rem 0.35rem -0.3rem;
 
 		padding: 0.4rem 0.75rem;
-		border-color: var(--primary);
-		border-style: solid;
-		border-width: 0.2rem;
+		border: 0.125rem solid var(--primary);
 
 		border-bottom-left-radius: 0.5rem 16rem;
 		border-bottom-right-radius: 16rem 0.5rem;

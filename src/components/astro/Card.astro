@@ -11,16 +11,16 @@ const inf = item.frontmatter;
 ---
 
 <li>
-	<figure>
-		<figcaption>
-			<ul class="pills">{inf.tags.map(v => <li>{v}</li>)}</ul>
-			<h2>{inf.title}</h2>
-			<p>{inf.description}</p>
-		</figcaption>
-		<a href={getPostUrl(item)}>
+	<a href={getPostUrl(item)}>
+		<figure>
+			<figcaption>
+				<ul class="pills">{inf.tags.map(v => <li>{v}</li>)}</ul>
+				<h2>{inf.title}</h2>
+				<p>{inf.description}</p>
+			</figcaption>
 			<img src={inf.cover.url} alt={inf.cover.alt} />
-		</a>
-	</figure>
+		</figure>
+	</a>
 </li>
 
 <style lang="scss">
@@ -37,7 +37,11 @@ const inf = item.frontmatter;
 		padding: 0;
 
 		width: calc(33% - 40px);
-		text-decoration: none;
+
+		& > a {
+			text-decoration: none;
+			color: var(--elementary);
+		}
 
 		&:not(.static):hover figure {
 			animation: shrink 1s linear both;
@@ -74,12 +78,6 @@ const inf = item.frontmatter;
 
 		& figcaption {
 			padding: 1.5rem 1.25rem 0 1.25rem;
-		}
-
-		& a {
-			@include f.flex();
-			width: 100%;
-			aspect-ratio: 16/9;
 		}
 
 		& img {
