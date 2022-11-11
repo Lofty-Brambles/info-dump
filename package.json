@@ -21,7 +21,7 @@
 		"@astrojs/sitemap": "^1.0.0",
 		"@astrojs/svelte": "^1.0.1",
 		"@nanostores/persistent": "^0.7.0",
-		"astro": "^1.4.6",
+		"astro": "^1.6.7",
 		"astro-compress": "^1.1.1",
 		"astro-seo": "^0.6.0",
 		"dotenv": "^16.0.3",
