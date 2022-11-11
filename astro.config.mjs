@@ -16,17 +16,7 @@ export default defineConfig({
 	integrations: [
 		svelte(),
 		mdx(),
-		sitemap({
-			serialize(item) {
-				if (/whoami/.test(item.url)) {
-					item.changefreq = "weekly";
-				}
-				return item;
-			},
-			filter(page) {
-				return page;
-			},
-		}),
+		sitemap(),
 		robotsTxt({
 			policy: [
 				{
