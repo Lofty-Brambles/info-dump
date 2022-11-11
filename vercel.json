@@ -1,9 +1,0 @@
-{
-	"cleanUrls": true,
-	"redirects": [
-		{
-			"source": "/posts",
-			"destination": "/"
-		}
-	]
-}
