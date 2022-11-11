@@ -71,9 +71,16 @@
 		user-select: none;
 		touch-action: manipulation;
 
-		&:hover, &:focus {
+		&:hover,
+		&:focus {
 			box-shadow: var(--elementary-lite) 2px 8px 8px -5px;
 			transform: translateX(10%);
+		}
+	}
+
+	@media (prefers-reduced-motion) {
+		button {
+			transition: none;
 		}
 	}
 </style>

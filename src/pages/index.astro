@@ -3,22 +3,23 @@ import Layout from "@layouts/Layout.astro";
 import SEO from "@components/astro/SEO.astro";
 import Header from "@components/astro/Header.astro";
 import Card from "@components/astro/Card.astro";
+import Footer from "@components/astro/Footer.astro";
 
 import type { Post } from "@lib/types/Post";
 
 const posts: Post[] = await Astro.glob("../../content/posts/*.mdx");
-posts.sort((a, b) => b.frontmatter.published - a.frontmatter.published);
+posts.sort((p, n) => p.frontmatter.published - n.frontmatter.published);
 ---
 
 <Layout title="test">
 	<SEO slot="SEO" />
 	<Header />
-
 	<main>
 		<ol>
 			{posts.map(v => <Card item={v} />)}
 		</ol>
 	</main>
+	<Footer />
 </Layout>
 
 <style lang="scss">
@@ -28,7 +29,6 @@ posts.sort((a, b) => b.frontmatter.published - a.frontmatter.published);
 	main {
 		box-sizing: border-box;
 		width: 100%;
-		margin-bottom: 2rem;
 		padding: 0 2rem;
 	}
 

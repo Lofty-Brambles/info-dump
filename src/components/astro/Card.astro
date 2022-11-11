@@ -66,7 +66,6 @@ const inf = item.frontmatter;
 		background-color: var(--background-lite);
 
 		border-radius: 1rem;
-		border: 1px solid var(--elementary);
 
 		&:not(.static) {
 			@include k.add-bobble();
@@ -78,8 +77,9 @@ const inf = item.frontmatter;
 		}
 
 		& a {
-			@include f.box(100%);
-			border-top: 1px solid var(--elementary);
+			@include f.flex();
+			width: 100%;
+			aspect-ratio: 16/9;
 		}
 
 		& img {
@@ -90,7 +90,7 @@ const inf = item.frontmatter;
 	}
 
 	ul.pills {
-		@include f.flex($just-cont: flex-start, $wrp: wrap, $gap: 1rem);
+		@include f.flex($just-cont: flex-start, $wrp: wrap, $gap: 0.5rem);
 		list-style-type: none;
 		padding-left: 0;
 		margin-bottom: 1rem;

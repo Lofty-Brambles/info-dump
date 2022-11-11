@@ -43,6 +43,7 @@
 		]
 	},
 	"devDependencies": {
+		"astro-robots-txt": "^0.3.10",
 		"cty": "^1.0.3",
 		"eslint-plugin-mdx": "^2.0.5",
 		"husky": "^8.0.0",
