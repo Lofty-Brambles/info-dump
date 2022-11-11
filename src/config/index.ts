@@ -6,7 +6,9 @@ export const websiteURLs = {
 	dev:
 		process.env.DEV_WEBSITE_URL?.trim().replace(/\/$/g, "") ||
 		"http://localhost:3000",
-	prod: (process.env.PROD_WEBSITE_URL as string).trim().replace(/\/$/g, ""),
+	prod:
+		(process.env.PROD_WEBSITE_URL as string).trim().replace(/\/$/g, "") ||
+		process.env.PUBLIC_VERCEL_URL!,
 	current() {
 		return import.meta.env.DEV ? this.dev : this.prod;
 	},
