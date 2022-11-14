@@ -20,9 +20,7 @@ export const blogDetails = {
 		process.env.BLOG_DESCRIPTION ||
 		"Info Dump is a simple blog aimed at getting some simple thoughts out to the world."
 	).trim(),
-	author: (process.env.BLOG_AUTHORS || "Lofty Brambles")
-		.split(",")
-		.map(e => e.trim()),
+	author: (process.env.BLOG_AUTHORS || "Lofty Brambles").trim(),
 	defaultTitle: (
 		process.env.BLOG_DEFAULT_TITLE || "Info Dump | Pen-time!"
 	).trim(),

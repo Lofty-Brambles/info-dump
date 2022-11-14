@@ -1,0 +1,42 @@
+---
+import { SecondsToWords } from "@lib/scripts/date-manager";
+import type { Post } from "@lib/types/Post";
+
+interface Props {
+	item: Post;
+}
+
+const item = Astro.props.item;
+---
+
+<h1>{item.frontmatter.title}</h1>
+<span>
+	<p>{item.frontmatter.author}</p>
+	<span class="dot" aria-hidden="true"></span>
+	<p>{new Date(item.frontmatter.published).toISOString()}</p>
+	<span class="dot" aria-hidden="true"></span>
+	<p>{SecondsToWords(+item.frontmatter.seconds2read)} read</p>
+</span>
+
+<style lang="scss">
+	@use "src/lib/styles-addn/func" as f;
+	@use "src/lib/styles-addn/vars" as v;
+
+	h1 {
+		margin: 1.25rem 0;
+		width: 75%;
+		text-align: center;
+
+		font-family: v.$titan;
+		font-size: v.$font-1;
+		line-height: normal;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	@include f.mq(md, max) {
+		h1 {
+			width: 100%;
+		}
+	}
+</style>

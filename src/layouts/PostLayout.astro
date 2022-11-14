@@ -30,7 +30,7 @@ const { postInfo } = Astro.props;
 		opgArticleInfo={{
 			published: UnixToDate(postInfo.published).toISOString(),
 			updated: UnixToDate(postInfo.updated).toISOString(),
-			authors: postInfo.authors,
+			author: postInfo.author,
 			tags: postInfo.tags,
 		}}
 	/>

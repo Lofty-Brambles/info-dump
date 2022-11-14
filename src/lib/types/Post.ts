@@ -3,7 +3,7 @@ import type { MarkdownInstance } from "astro";
 export interface FrontmatterType {
 	title: string;
 	description: string;
-	authors: string[];
+	author: string;
 	tags: string[];
 	published: number;
 	updated: number;
