@@ -1,7 +1,8 @@
 ---
-import { getPostUrl } from "@lib/scripts/get-post-url";
-
+import Pills from "./Pills.astro";
+import { getPostUrl } from "@lib/scripts/resolve-url";
 import type { Post } from "@lib/types/Post";
+
 interface Props {
 	item: Post;
 }
@@ -11,14 +12,14 @@ const inf = item.frontmatter;
 ---
 
 <li>
-	<a href={getPostUrl(item)}>
+	<a href={getPostUrl(item)} data-test={getPostUrl(item, { onlyEnds: true })}>
 		<figure>
 			<figcaption>
-				<ul class="pills">{inf.tags.map(v => <li>{v}</li>)}</ul>
+				<Pills list={inf.tags} />
 				<h2>{inf.title}</h2>
 				<p>{inf.description}</p>
 			</figcaption>
-			<img src={inf.cover.url} alt={inf.cover.alt} />
+			<img src={inf.cover.url} alt={inf.cover.alt} loading="lazy" />
 		</figure>
 	</a>
 </li>
@@ -87,29 +88,8 @@ const inf = item.frontmatter;
 		}
 	}
 
-	ul.pills {
-		@include f.flex($just-cont: flex-start, $wrp: wrap, $gap: 0.5rem);
-		list-style-type: none;
-		padding-left: 0;
-		margin-bottom: 1rem;
-
-		& li {
-			width: fit-content;
-			padding: 0.5rem 1.25rem;
-			margin: 0 !important;
-			border-radius: 0.75rem;
-
-			color: var(--elementary);
-			background-color: var(--foreground);
-
-			text-transform: uppercase;
-			font-family: v.$sans-serif;
-			font-weight: 500;
-		}
-	}
-
 	h2 {
-		margin: 0;
+		margin: 1rem 0 0 0;
 		font-family: v.$titan;
 		letter-spacing: 0.75px;
 	}

@@ -69,4 +69,11 @@ import { websiteURLs } from "@config";
 			line-height: normal;
 		}
 	}
+
+	@include f.mq(sm, max) {
+		footer {
+			width: calc(100% - 2rem);
+			margin: 0 1rem 2rem 1rem;
+		}
+	}
 </style>

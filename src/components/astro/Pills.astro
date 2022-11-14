@@ -1,0 +1,44 @@
+---
+interface Props {
+	list: string[];
+}
+
+const { list } = Astro.props;
+---
+
+<ul class="pills">{list.map(v => <li>{v}</li>)}</ul>
+
+<style lang="scss">
+	@use "src/lib/styles-addn/vars" as v;
+	@use "src/lib/styles-addn/func" as f;
+
+	ul.pills {
+		@include f.flex($just-cont: flex-start, $wrp: wrap, $gap: 0.5rem);
+		list-style-type: none;
+		padding-left: 0;
+		margin: 0;
+
+		& li {
+			width: fit-content;
+			padding: 0.45rem 0.75rem;
+			margin: 0 !important;
+			border-radius: 0.25rem;
+			
+			color: var(--elementary);
+			background-color: var(--foreground);
+			
+			text-transform: uppercase;
+			font-family: v.$sans-serif;
+			font-weight: 500;
+			font-size: 0.85rem;
+		}
+	}
+	
+	@include f.mq(md) {
+		ul.pills li {
+			padding: 0.5rem 1.25rem;
+			border-radius: 0.75rem;
+			font-size: 1rem;
+		}
+	}
+</style>

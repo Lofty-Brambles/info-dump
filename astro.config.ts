@@ -6,6 +6,7 @@ import sitemap from "@astrojs/sitemap";
 import compress from "astro-compress";
 import prefetch from "@astrojs/prefetch";
 
+import sveltePreprocess from "svelte-preprocess";
 import { websiteURLs } from "./src/config";
 
 // https://astro.build/config
@@ -14,7 +15,9 @@ export default defineConfig({
 		extendDefaultPlugins: true,
 	},
 	integrations: [
-		svelte(),
+		svelte({
+			preprocess: sveltePreprocess(),
+		}),
 		mdx(),
 		sitemap(),
 		robotsTxt({

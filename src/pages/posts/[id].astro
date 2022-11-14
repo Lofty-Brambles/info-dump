@@ -1,0 +1,54 @@
+---
+import PostLayout from "@layouts/PostLayout.astro";
+import Pills from "@components/astro/Pills.astro";
+
+import { getPostUrl } from "@lib/scripts/resolve-url";
+import type { Post } from "@lib/types/Post";
+
+export async function getStaticPaths() {
+	const posts: Post[] = await Astro.glob("../../../content/posts/*.mdx");
+	return posts.map(p => ({
+		params: { id: getPostUrl(p, { onlyEnds: true }) },
+		props: { post: p },
+	}));
+}
+
+const post: Post = Astro.props.post;
+---
+
+<PostLayout postInfo={post.frontmatter}>
+	<main>
+		<div>
+			<Pills list={post.frontmatter.tags} />
+		</div>
+	</main>
+</PostLayout>
+
+<style lang="scss">
+	@use "src/lib/styles-addn/vars" as v;
+	@use "src/lib/styles-addn/func" as f;
+
+	main {
+		box-sizing: border-box;
+		width: 100%;
+		max-width: 56rem;
+		padding: 1rem;
+
+		& div {
+			width: 100%;
+			@include f.flex(column)
+		}
+	}
+
+	@include f.mq(sm) {
+		main {
+			padding: 2rem;
+		}
+	}
+
+	@include f.mq(md) {
+		main {
+			padding: 3rem;
+		}
+	}
+</style>

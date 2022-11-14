@@ -1,0 +1,40 @@
+---
+import Layout from "./Layout.astro";
+import SEO from "@components/astro/SEO.astro";
+import Header from "@components/astro/Header.astro";
+import Footer from "@components/astro/Footer.astro";
+
+import { UnixToDate } from "@lib/scripts/date-manager";
+import type { FrontmatterType } from "@lib/types/Post";
+
+export interface Props {
+	postInfo: FrontmatterType;
+}
+
+const { postInfo } = Astro.props;
+---
+
+<Layout title={postInfo.title}>
+	<SEO
+		slot="SEO"
+		descripion={postInfo.description}
+		opgTitle={postInfo.title}
+		opgType="article"
+		opgImage={{
+			url: postInfo.cover.url,
+			alt: postInfo.cover.alt,
+			type: "image/svg",
+			width: 512,
+			height: 512,
+		}}
+		opgArticleInfo={{
+			published: UnixToDate(postInfo.published).toISOString(),
+			updated: UnixToDate(postInfo.updated).toISOString(),
+			authors: postInfo.authors,
+			tags: postInfo.tags,
+		}}
+	/>
+	<Header />
+	<slot />
+	<Footer />
+</Layout>

@@ -1,6 +1,6 @@
 import rss from "@astrojs/rss";
 
-import { getPostUrl } from "@lib/scripts/get-post-url";
+import { getPostUrl } from "@lib/scripts/resolve-url";
 import { UnixToDate } from "@lib/scripts/date-manager";
 import { blogDetails } from "@config";
 import type { Post } from "@lib/types/Post";

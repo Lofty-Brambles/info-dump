@@ -76,6 +76,7 @@
 
 		&:hover,
 		&:focus {
+			outline: 1px solid #000;
 			box-shadow: var(--elementary-lite) 2px 8px 8px -5px;
 			transform: translateX(10%);
 		}
