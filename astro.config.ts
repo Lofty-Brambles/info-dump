@@ -8,10 +8,12 @@ import prefetch from "@astrojs/prefetch";
 
 import sveltePreprocess from "svelte-preprocess";
 import { websiteURLs } from "./src/config";
+import { mdxConfig } from "./src/mdx.config";
 
 // https://astro.build/config
 export default defineConfig({
 	markdown: {
+		...mdxConfig,
 		extendDefaultPlugins: true,
 	},
 	integrations: [

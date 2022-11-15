@@ -7,6 +7,7 @@ export interface FrontmatterType {
 	tags: string[];
 	published: number;
 	updated: number;
+	minutesRead: string;
 	cover: {
 		url: string;
 		alt: string;

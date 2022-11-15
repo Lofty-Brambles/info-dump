@@ -23,6 +23,7 @@ const post: Post = Astro.props.post;
 			<Pills list={post.frontmatter.tags} />
 			<HeadTag item={post} />
 		</div>
+		<post.Content />
 	</main>
 </PostLayout>
 
@@ -38,7 +39,7 @@ const post: Post = Astro.props.post;
 
 		& div {
 			width: 100%;
-			@include f.flex(column)
+			@include f.flex(column);
 		}
 	}
 

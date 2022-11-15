@@ -1,5 +1,4 @@
 ---
-import { SecondsToWords } from "@lib/scripts/date-manager";
 import type { Post } from "@lib/types/Post";
 
 interface Props {
@@ -15,7 +14,7 @@ const item = Astro.props.item;
 	<span class="dot" aria-hidden="true"></span>
 	<p>{new Date(item.frontmatter.published).toISOString()}</p>
 	<span class="dot" aria-hidden="true"></span>
-	<p>{SecondsToWords(+item.frontmatter.seconds2read)} read</p>
+	<p>{item.frontmatter.minutesRead}</p>
 </span>
 
 <style lang="scss">
