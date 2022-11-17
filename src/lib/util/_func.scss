@@ -4,8 +4,8 @@
    -------------
 */
 
-@use "src/lib/styles-addn/vars" as v;
-@use "src/lib/styles-addn/keyframes" as k;
+@use "src/lib/util/vars" as v;
+@use "src/lib/util/keyframes" as k;
 
 @mixin mq($name, $type: min) {
 	$min: map-get($map: v.$breakpoints, $key: $name);

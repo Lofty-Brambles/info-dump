@@ -38,8 +38,8 @@ const pubDate = new Date(item.frontmatter.published);
 </div>
 
 <style lang="scss">
-	@use "src/lib/styles-addn/func" as f;
-	@use "src/lib/styles-addn/vars" as v;
+	@use "src/lib/util/func" as f;
+	@use "src/lib/util/vars" as v;
 
 	div {
 		@include f.flex($gap: 1rem);
@@ -50,7 +50,7 @@ const pubDate = new Date(item.frontmatter.published);
 	time {
 		@include f.flex(column);
 		min-width: 80px;
-		
+
 		& * {
 			width: 100%;
 			font-family: v.$mono;

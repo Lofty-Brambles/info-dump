@@ -15,7 +15,7 @@
 </button>
 
 <style lang="scss">
-	@use "src/lib/styles-addn/func" as f;
+	@use "src/lib/util/func" as f;
 
 	button {
 		@include f.box(3rem);

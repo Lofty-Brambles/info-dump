@@ -32,8 +32,8 @@ const posts = allPosts
 </Layout>
 
 <style lang="scss">
-	@use "src/lib/styles-addn/func" as f;
-	@use "src/lib/styles-addn/vars" as v;
+	@use "src/lib/util/func" as f;
+	@use "src/lib/util/vars" as v;
 
 	main {
 		@include f.flex(column);
@@ -44,7 +44,6 @@ const posts = allPosts
 
 	ol {
 		@include f.flex($wrp: wrap);
-		list-style: none;
 		margin: 0 0 1rem 0;
 		padding: 0;
 	}
@@ -64,10 +63,9 @@ const posts = allPosts
 
 		h4 {
 			margin: 0;
-			color: var(--elementary);
 			font-family: v.$mono;
 			font-size: v.$font-0;
-			letter-spacing: normal;
+			font-weight: 800;
 		}
 	}
 

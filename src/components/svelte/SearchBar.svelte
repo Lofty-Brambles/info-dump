@@ -18,7 +18,7 @@
 </form>
 
 <style lang="scss">
-	@use "src/lib/styles-addn/func" as f;
+	@use "src/lib/util/func" as f;
 
 	form {
 		position: relative;
@@ -29,17 +29,17 @@
 		height: 3rem;
 		border: 1px solid var(--elementary);
 		background-color: inherit;
-		
+
 		&:has(input:focus) {
 			outline: 0.125rem solid var(--elementary);
 		}
 	}
-	
+
 	input {
 		margin: 0 3.25rem 0 0.25rem;
 		width: 100%;
 		border: none;
-		
+
 		background-color: inherit;
 		color: var(--elementary);
 		font-size: 1.2rem;

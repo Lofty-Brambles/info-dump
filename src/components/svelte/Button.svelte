@@ -3,14 +3,12 @@
 </script>
 
 <button {...$$restProps} class:search-button={searchButton}>
-	<slot>
-		Click Me!
-	</slot>
+	<slot>Click Me!</slot>
 </button>
 
 <style lang="scss">
-	@use "src/lib/styles-addn/func" as f;
-	@use "src/lib/styles-addn/vars" as v;
+	@use "src/lib/util/func" as f;
+	@use "src/lib/util/vars" as v;
 
 	button {
 		padding: 0.6rem 1rem;
