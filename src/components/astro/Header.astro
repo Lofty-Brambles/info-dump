@@ -1,10 +1,10 @@
 ---
 import SearchBar from "@components/svelte/SearchBar.svelte";
-import { blogDetails } from "@config";
+import { blogDetails, websiteURLs } from "@config";
 ---
 
 <header>
-	<a href={Astro.url.host}>
+	<a href={websiteURLs.current()}>
 		<img src="/favicon.gif" alt="logo" width="64" height="64" />
 		<span>{blogDetails.name}</span>
 	</a>

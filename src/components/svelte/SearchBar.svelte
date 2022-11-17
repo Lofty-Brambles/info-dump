@@ -1,4 +1,6 @@
 <script type="ts">
+	import Button from "./Button.svelte";
+
 	const handleSearch = () => {
 		console.log("helo");
 	};
@@ -11,7 +13,8 @@
 		name="search-bar"
 		id="search bar"
 	/>
-	<button type="submit">Submit</button>
+	<!-- <button type="submit">Submit</button> -->
+	<Button type="submit" searchButton>Submit</Button>
 </form>
 
 <style lang="scss">
@@ -24,67 +27,22 @@
 		margin: 0.5rem 4rem 0.5rem 1rem;
 
 		height: 3rem;
-		border: 1px solid #000;
-		background-color: #fff;
-
+		border: 1px solid var(--elementary);
+		background-color: inherit;
+		
 		&:has(input:focus) {
-			outline: 0.125rem solid #000;
+			outline: 0.125rem solid var(--elementary);
 		}
 	}
-
+	
 	input {
-		margin: 0 2.75rem 0 0.25rem;
+		margin: 0 3.25rem 0 0.25rem;
 		width: 100%;
 		border: none;
-
+		
+		background-color: inherit;
+		color: var(--elementary);
 		font-size: 1.2rem;
 		outline: none;
-	}
-
-	button {
-		position: absolute;
-		left: calc(100% - 2.5rem);
-		box-sizing: border-box;
-		@include f.flex($gap: 0.25rem);
-		align-self: center;
-		box-shadow: var(--elementary-lite) 0.6rem 0.875rem 0.35rem -0.3rem;
-
-		padding: 0.4rem 0.75rem;
-		border: 0.125rem solid var(--primary);
-
-		border-bottom-left-radius: 0.5rem 16rem;
-		border-bottom-right-radius: 16rem 0.5rem;
-		border-top-left-radius: 16rem 0.5rem;
-		border-top-right-radius: 0.5rem 16rem;
-
-		background-color: var(--secondary);
-		background-image: none;
-		background-position: 0 90%;
-		background-repeat: repeat no-repeat;
-		background-size: 0.25rem 0.1875rem;
-
-		color: var(--anti-elementary);
-		font-family: "Titan", sans-serif;
-		font-size: 1rem;
-		line-height: 23px;
-		text-decoration: none;
-
-		outline: none;
-		transition: all 235ms ease-in-out;
-		user-select: none;
-		touch-action: manipulation;
-
-		&:hover,
-		&:focus {
-			outline: 1px solid #000;
-			box-shadow: var(--elementary-lite) 2px 8px 8px -5px;
-			transform: translateX(10%);
-		}
-	}
-
-	@media (prefers-reduced-motion) {
-		button {
-			transition: none;
-		}
 	}
 </style>

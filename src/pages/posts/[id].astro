@@ -18,40 +18,38 @@ const post: Post = Astro.props.post;
 ---
 
 <PostLayout postInfo={post.frontmatter}>
-	<main>
-		<div>
-			<Pills list={post.frontmatter.tags} />
-			<HeadTag item={post} />
-		</div>
-		<post.Content />
-	</main>
+	<div>
+		<Pills list={post.frontmatter.tags} />
+		<HeadTag item={post} />
+	</div>
+	<main class="md"><post.Content /></main>
 </PostLayout>
 
 <style lang="scss">
 	@use "src/lib/styles-addn/vars" as v;
 	@use "src/lib/styles-addn/func" as f;
 
-	main {
+	main,
+	div {
 		box-sizing: border-box;
 		width: 100%;
-		max-width: 56rem;
+		max-width: 80ch;
 		padding: 1rem;
-
-		& div {
-			width: 100%;
-			@include f.flex(column);
-		}
 	}
 
 	@include f.mq(sm) {
-		main {
+		main,
+		div {
 			padding: 2rem;
 		}
 	}
 
-	@include f.mq(md) {
-		main {
-			padding: 3rem;
-		}
+	div {
+		padding-bottom: 0;
+		@include f.flex(column);
+	}
+	main {
+		padding-top: 0;
+		font-family: v.$sans-serif;
 	}
 </style>

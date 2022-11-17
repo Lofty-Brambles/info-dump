@@ -17,6 +17,7 @@ const inf = item.frontmatter;
 			<figcaption>
 				<Pills list={inf.tags} />
 				<h2>{inf.title}</h2>
+				<time class="date">{inf.published}</time>
 				<p>{inf.description}</p>
 			</figcaption>
 			<img src={inf.cover.url} alt={inf.cover.alt} loading="lazy" />
@@ -42,10 +43,28 @@ const inf = item.frontmatter;
 		& > a {
 			text-decoration: none;
 			color: var(--elementary);
+
+			&:focus,
+			&:focus-visible {
+				outline: none;
+			}
+
+			&:not(.static):hover,
+			&:not(.static):focus,
+			&:not(.static):focus-visible {
+				figure {
+					animation: shrink 1s linear both;
+				}
+			}
 		}
 
-		&:not(.static):hover figure {
-			animation: shrink 1s linear both;
+		&:not(.static):hover,
+		&:not(.static):focus,
+		&:not(.static):focus-visible {
+			outline: none;
+			figure {
+				animation: shrink 1s linear both;
+			}
 		}
 	}
 
@@ -89,16 +108,21 @@ const inf = item.frontmatter;
 	}
 
 	h2 {
-		margin: 1rem 0 0 0;
+		margin: 1rem 0 0.5rem 0;
 		font-family: v.$titan;
 		letter-spacing: 0.75px;
 	}
 
 	p {
-		margin: 1rem 0;
+		margin: 0.5rem 0 1rem 0;
 		font-family: v.$sans-serif;
 		font-size: v.$font--1;
 		line-height: normal;
+	}
+
+	time {
+		font-family: v.$mono;
+		font-size: 0.85rem;
 	}
 
 	@media (prefers-reduced-motion) {

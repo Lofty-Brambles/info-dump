@@ -2,19 +2,28 @@
 import Layout from "@layouts/Layout.astro";
 import SEO from "@components/astro/SEO.astro";
 import Header from "@components/astro/Header.astro";
+import IntroBanner from "@components/astro/IntroBanner.astro";
 import Card from "@components/astro/Card.astro";
+import Button from "@components/svelte/Button.svelte";
 import Footer from "@components/astro/Footer.astro";
 
 import type { Post } from "@lib/types/Post";
 
-const posts: Post[] = await Astro.glob("../../content/posts/*.mdx");
-posts.sort((p, n) => p.frontmatter.published - n.frontmatter.published);
+const allPosts: Post[] = await Astro.glob("../../content/posts/*.mdx");
+const posts = allPosts
+	.sort((p, n) => p.frontmatter.published - n.frontmatter.published)
+	.slice(0, 5);
 ---
 
 <Layout title="test">
 	<SEO slot="SEO" />
 	<Header />
+	<IntroBanner />
 	<main>
+		<nav>
+			<h4>Latest Articles -</h4>
+			<Button aria-label="show all latest articles">Show All</Button>
+		</nav>
 		<ol>
 			{posts.map(v => <Card item={v} />)}
 		</ol>
@@ -27,6 +36,7 @@ posts.sort((p, n) => p.frontmatter.published - n.frontmatter.published);
 	@use "src/lib/styles-addn/vars" as v;
 
 	main {
+		@include f.flex(column);
 		box-sizing: border-box;
 		width: 100%;
 		padding: 0 2rem;
@@ -35,13 +45,36 @@ posts.sort((p, n) => p.frontmatter.published - n.frontmatter.published);
 	ol {
 		@include f.flex($wrp: wrap);
 		list-style: none;
-		margin: 1rem 0;
+		margin: 0 0 1rem 0;
 		padding: 0;
 	}
 
 	@include f.mq(xl) {
 		main {
 			width: 1300px;
+		}
+	}
+
+	nav {
+		position: relative;
+		@include f.flex(row, space-between);
+		margin: 3rem 0 0 0;
+		padding: 0;
+		width: calc(100% - 5rem);
+
+		h4 {
+			margin: 0;
+			color: var(--elementary);
+			font-family: v.$mono;
+			font-size: v.$font-0;
+			letter-spacing: normal;
+		}
+	}
+
+	@include f.mq(lg) {
+		nav {
+			margin: 3rem 1.25rem 0 1.25rem;
+			width: calc(99% - 7.5rem);
 		}
 	}
 </style>

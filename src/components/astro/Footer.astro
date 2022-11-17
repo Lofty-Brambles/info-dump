@@ -59,6 +59,7 @@ import { websiteURLs } from "@config";
 
 		@include f.flex($just-cont: flex-start, $wrp: wrap, $gap: 1.5rem);
 		background-color: var(--background-lite);
+		color: var(--elementary);
 
 		@include f.deferred-bg();
 
@@ -67,6 +68,10 @@ import { websiteURLs } from "@config";
 			font-family: v.$sans-serif;
 			font-size: v.$font--1;
 			line-height: normal;
+		}
+
+		& a {
+			color: #00f;
 		}
 	}
 

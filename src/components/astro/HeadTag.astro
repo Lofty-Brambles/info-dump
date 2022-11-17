@@ -1,29 +1,74 @@
 ---
 import type { Post } from "@lib/types/Post";
 
+const map = new Map<number, string>([
+	[0, "Jan"],
+	[1, "Feb"],
+	[2, "Mar"],
+	[3, "Apr"],
+	[4, "May"],
+	[5, "Jun"],
+	[6, "Jul"],
+	[7, "Aug"],
+	[8, "Sep"],
+	[9, "Oct"],
+	[10, "Nov"],
+	[11, "Dec"],
+]);
+
 interface Props {
 	item: Post;
 }
 
 const item = Astro.props.item;
+const pubDate = new Date(item.frontmatter.published);
 ---
 
-<h1>{item.frontmatter.title}</h1>
-<span>
-	<p>{item.frontmatter.author}</p>
-	<span class="dot" aria-hidden="true"></span>
-	<p>{new Date(item.frontmatter.published).toISOString()}</p>
-	<span class="dot" aria-hidden="true"></span>
-	<p>{item.frontmatter.minutesRead}</p>
-</span>
+<div>
+	<time>
+		<span>
+			{pubDate.getDate().toString().padStart(2, "0")}
+		</span>
+		<span>
+			{map.get(pubDate.getMonth())}
+			{pubDate.getFullYear()}
+		</span>
+	</time>
+	<h1>{item.frontmatter.title}</h1>
+</div>
 
 <style lang="scss">
 	@use "src/lib/styles-addn/func" as f;
 	@use "src/lib/styles-addn/vars" as v;
 
+	div {
+		@include f.flex($gap: 1rem);
+		width: 100%;
+		margin: 1rem 0;
+	}
+
+	time {
+		@include f.flex(column);
+		min-width: 80px;
+		
+		& * {
+			width: 100%;
+			font-family: v.$mono;
+			font-size: v.$font--2;
+			text-align: center;
+		}
+
+		& span:first-child {
+			padding-bottom: 0.5rem;
+			color: var(--primary);
+			font-family: v.$sans-serif;
+			font-weight: 800;
+			font-size: v.$font-2;
+		}
+	}
+
 	h1 {
 		margin: 1.25rem 0;
-		width: 75%;
 		text-align: center;
 
 		font-family: v.$titan;
@@ -31,11 +76,5 @@ const item = Astro.props.item;
 		line-height: normal;
 		overflow: hidden;
 		text-overflow: ellipsis;
-	}
-
-	@include f.mq(md, max) {
-		h1 {
-			width: 100%;
-		}
 	}
 </style>
