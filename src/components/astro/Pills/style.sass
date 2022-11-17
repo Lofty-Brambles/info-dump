@@ -2,7 +2,7 @@
 @use "src/lib/util/func" as f
 
 ul.pills
-	@include f.flex($jc: flex-start, $wrp: wrap, $g: 0.5rem)
+	+f.flex($jc: flex-start, $wrp: wrap, $g: 0.5rem)
 
 	& li
 		width: fit-content
@@ -15,7 +15,7 @@ ul.pills
 		font-weight: 500
 		font-size: 0.85rem
 
-		@include f.mq(md)
+		+f.mq(md)
 			padding: 0.5rem 1.25rem
 			border-radius: 0.75rem
 			font-size: 1rem

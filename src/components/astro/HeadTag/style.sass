@@ -7,7 +7,7 @@ div.headtag
 	margin: 2rem 0
 
 	time
-		@include f.flex(column)
+		+f.flex(column)
 		min-width: 80px
 
 		& *
@@ -35,8 +35,8 @@ div.headtag
 
 			+f.mq(sm, max)
 				font-size: v.$font-1
-		
-		p span 
+
+		p span
 			white-space: nowrap
 
 	+f.mq(md, max)

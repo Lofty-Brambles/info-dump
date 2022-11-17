@@ -16,7 +16,7 @@ footer
 	+f.deferred-bg()
 
 	& *
-		@include f.flex($g: 1rem)
+		+f.flex($g: 1rem)
 		line-height: normal
 
 	& a, & a *
@@ -26,7 +26,7 @@ footer
 		&:hover
 			text-decoration: underline
 
-	@include f.mq(sm, max)
+	+f.mq(sm, max)
 		footer
 			width: calc(100% - 2rem)
 			margin: 0 1rem 2rem 1rem

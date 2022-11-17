@@ -18,6 +18,6 @@
 	@use "src/lib/util/func" as f;
 
 	button {
-		@include f.box(3rem);
+		+f.box(3rem);
 	}
 </style>
