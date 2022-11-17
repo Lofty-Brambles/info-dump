@@ -1,4 +1,5 @@
 ---
+import "./style.sass";
 import { websiteURLs } from "@config";
 ---
 
@@ -42,43 +43,3 @@ import { websiteURLs } from "@config";
 		</svg>Connect to the feed!
 	</a>
 </footer>
-
-<style lang="scss">
-	@use "src/lib/util/func" as f;
-	@use "src/lib/util/vars" as v;
-
-	footer {
-		box-sizing: border-box;
-		position: relative;
-		width: calc(100% - 4rem);
-
-		margin: 0 2rem 2rem 2rem;
-		padding: 1.5rem;
-		border: 1px var(--elementary) solid;
-		border-radius: 0.5rem;
-
-		@include f.flex($just-cont: flex-start, $wrp: wrap, $gap: 1.5rem);
-		background-color: var(--background-lite);
-		color: var(--elementary);
-
-		@include f.deferred-bg();
-
-		& * {
-			@include f.flex($gap: 1rem);
-			font-family: v.$sans-serif;
-			font-size: v.$font--1;
-			line-height: normal;
-		}
-
-		& a {
-			color: #00f;
-		}
-	}
-
-	@include f.mq(sm, max) {
-		footer {
-			width: calc(100% - 2rem);
-			margin: 0 1rem 2rem 1rem;
-		}
-	}
-</style>

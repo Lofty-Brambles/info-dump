@@ -1,0 +1,44 @@
+@use "src/lib/util/func" as f
+@use "src/lib/util/vars" as v
+
+div.headtag
+	+f.flex($g: 2rem)
+	width: 100%
+	margin: 2rem 0
+
+	time
+		@include f.flex(column)
+		min-width: 80px
+
+		& *
+			width: 100%
+			font-family: v.$mono
+			font-size: v.$font--2
+			text-align: center
+
+		& span:first-child
+			padding-bottom: 0.5rem
+			color: var(--primary)
+			font-weight: 800
+			font-size: v.$font-2
+
+	div
+		max-width: calc(100% - 2rem)
+		text-align: center
+
+		h1
+			margin-bottom: 1rem
+			font-family: v.$titan
+			font-size: v.$font-2
+			overflow: hidden
+			text-overflow: ellipsis
+
+			+f.mq(sm, max)
+				font-size: v.$font-1
+		
+		p span 
+			white-space: nowrap
+
+	+f.mq(md, max)
+		flex-direction: column
+		gap: 1rem

@@ -1,0 +1,42 @@
+@use "src/lib/util/func" as f
+@use "src/lib/util/vars" as v
+
+header
+	position: relative
+	width: calc(100% - 4rem)
+
+	margin: 2rem
+	padding: 0.5rem
+	border: 1px var(--elementary) solid
+	border-radius: 0.5rem
+
+	+f.flex($jc: space-around, $wrp: wrap)
+	background-color: var(--background-lite)
+	+f.deferred-bg()
+
+	& > a
+		+f.flex($g: 1rem)
+		padding: 0.1rem 0.4rem
+		margin: 0 1rem
+		text-decoration: none
+
+		& span
+			font-family: v.$titan
+			font-size: 1.75rem
+
+		&:focus
+			outline: 0.2rem var(--elementary) solid
+
+		& > img
+			+f.box(4rem)
+
+	+f.mq(sm, max)
+		width: calc(100% - 2rem)
+		margin: 2rem 1rem
+
+		& > a
+			& span
+				font-size: 1.25rem
+
+			& > img
+				+f.box(2.5rem)

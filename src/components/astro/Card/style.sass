@@ -1,0 +1,76 @@
+@use "src/lib/util/vars" as v
+@use "src/lib/util/func" as f
+@use "src/lib/util/keyframes" as k
+@include k.add-bobble()
+@include k.restore-bobble()
+
+li
+	height: 100%
+	margin: 1.25rem !important
+	padding: 0
+
+	width: calc(33% - 40px)
+
+	& > a
+		text-decoration: none
+
+		&:focus,
+		&:focus-visible
+			outline: none
+
+		&:not(.static):hover,
+		&:not(.static):focus,
+		&:not(.static):focus-visible
+			figure
+				animation: shrink 1s linear both
+
+	&:not(.static):hover,
+	&:not(.static):focus,
+	&:not(.static):focus-visible
+		outline: none
+		figure
+			animation: shrink 1s linear both
+
+	+f.mq(xl, max)
+		width: calc(50% - 40px)
+
+	+f.mq(lg, max)
+		width: 100%
+		margin: 15px 0 !important
+
+figure
+	+f.flex(column)
+	+f.box(calc(100% - 2px))
+
+	margin: 0
+	border-radius: 1rem
+	background-color: var(--background-lite)
+
+	&:not(.static)
+		+k.add-bobble()
+		animation: restore 1s linear both
+
+	& figcaption
+		padding: 1.5rem 1.25rem 0 1.25rem
+
+	& h2
+		margin: 1rem 0 0.5rem 0
+		font-family: v.$titan
+		font-size: v.$font-1
+
+	& p
+		margin: 0.5rem 0 1rem 0
+
+	& time
+		font-family: v.$mono
+		font-size: 0.85rem
+
+	& img
+		+f.box(100%)
+		aspect-ratio: 16/9
+		border-radius: 0 0 1rem 1rem
+
+@media (prefers-reduced-motion)
+	li,
+	figure
+		animation: none !important

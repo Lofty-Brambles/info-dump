@@ -1,0 +1,28 @@
+---
+import "./style.sass";
+
+import { UnixToGeneric } from "@lib/scripts/date-manager";
+import type { Post } from "@lib/types/Post";
+
+interface Props {
+	item: Post;
+}
+
+const item = Astro.props.item;
+const date = UnixToGeneric(item.frontmatter.published);
+---
+
+<div class="headtag">
+	<time>
+		<span>
+			{date.day}
+		</span>
+		<span>
+			{date.month}&nbsp;{date.year}
+		</span>
+	</time>
+	<div>
+		<h1>{item.frontmatter.title}</h1>
+		<p><span>{item.frontmatter.author}</span> • <span>{item.frontmatter.minutesRead}</span></p>
+	</div>
+</div>

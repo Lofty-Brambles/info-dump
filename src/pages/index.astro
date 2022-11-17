@@ -1,11 +1,11 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import SEO from "@components/astro/SEO.astro";
-import Header from "@components/astro/Header.astro";
-import IntroBanner from "@components/astro/IntroBanner.astro";
-import Card from "@components/astro/Card.astro";
-import Button from "@components/svelte/Button.svelte";
-import Footer from "@components/astro/Footer.astro";
+import Header from "@components/astro/Header/index.astro";
+import IntroBanner from "@components/astro/IntroBanner/index.astro";
+import Card from "@components/astro/Card/index.astro";
+import Button from "@components/svelte/Button/index.svelte";
+import Footer from "@components/astro/Footer/index.astro";
 
 import type { Post } from "@lib/types/Post";
 
@@ -21,8 +21,8 @@ const posts = allPosts
 	<IntroBanner />
 	<main>
 		<nav>
-			<h4>Latest Articles -</h4>
-			<Button aria-label="show all latest articles">Show All</Button>
+			<h4>Latest&nbsp;-</h4>
+			<Button aria-label="show all latest articles">More</Button>
 		</nav>
 		<ol>
 			{posts.map(v => <Card item={v} />)}
@@ -31,48 +31,35 @@ const posts = allPosts
 	<Footer />
 </Layout>
 
-<style lang="scss">
-	@use "src/lib/util/func" as f;
-	@use "src/lib/util/vars" as v;
+<style lang="sass">
+	@use "src/lib/util/func" as f
+	@use "src/lib/util/vars" as v
 
-	main {
-		@include f.flex(column);
-		box-sizing: border-box;
-		width: 100%;
-		padding: 0 2rem;
-	}
+	main
+		+f.flex(column)
+		width: 100%
+		padding: 2rem 2rem 0 2rem
 
-	ol {
-		@include f.flex($wrp: wrap);
-		margin: 0 0 1rem 0;
-		padding: 0;
-	}
+		+f.mq(xl)
+			width: 1300px
 
-	@include f.mq(xl) {
-		main {
-			width: 1300px;
-		}
-	}
+	ol
+		+f.flex($wrp: wrap)
+		margin: 0 0 1rem 0
+		padding: 0
 
-	nav {
-		position: relative;
-		@include f.flex(row, space-between);
-		margin: 3rem 0 0 0;
-		padding: 0;
-		width: calc(100% - 5rem);
+	nav
+		position: relative
+		+f.flex($jc: space-between, $g: 1rem)
+		width: calc(100% - 3rem)
 
-		h4 {
-			margin: 0;
-			font-family: v.$mono;
-			font-size: v.$font-0;
-			font-weight: 800;
-		}
-	}
+		h4
+			margin: 0
+			text-align: center
+			font-family: v.$mono
+			font-weight: 800
 
-	@include f.mq(lg) {
-		nav {
-			margin: 3rem 1.25rem 0 1.25rem;
-			width: calc(99% - 7.5rem);
-		}
-	}
+		+f.mq(lg)
+			margin: 3rem 1.25rem 0 1.25rem
+			width: calc(99% - 7.5rem)
 </style>

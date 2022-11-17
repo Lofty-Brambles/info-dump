@@ -18,46 +18,40 @@ const { title } = Astro.props;
 	</head>
 	<body>
 		<slot />
-		<style lang="scss" is:global>
-			@use "src/lib/util/reset";
-			@use "src/lib/util/func" as f;
-			@use "src/lib/util/vars" as v;
+		<style lang="sass" is:global>
+			@use "src/lib/util/reset"
+			@use "src/lib/util/func" as f
+			@use "src/lib/util/vars" as v
 
-			:root {
-				--elementary: #{v.$black};
-				--elementary-lite: #{v.$faded-black};
-				--anti-elementary: #{v.$white};
-				--foreground: #{v.$cyan};
-				--background: #{v.$light-cyan};
-				--background-lite: #{v.$lightest-cyan};
-				--primary: #{v.$dark-blue};
-				--secondary: #{v.$blue};
-			}
+			:root
+				--elementary: #{v.$black}
+				--elementary-lite: #{v.$faded-black}
+				--anti-elementary: #{v.$white}
+				--foreground: #{v.$cyan}
+				--background: #{v.$light-cyan}
+				--background-lite: #{v.$lightest-cyan}
 
-			html.dark {
-				--elementary: #{v.$white};
-				--elementary-lite: #{v.$faded-white};
-				--anti-elementary: #{v.$black};
-				--foreground: #{v.$light-purple};
-				--background: #{v.$dark-purple};
-				--background-lite: #{v.$purple};
-				--primary: #{v.$light-blue};
-				--secondary: #{v.$lightest-blue};
-			}
+			html.dark
+				--elementary: #{v.$white}
+				--elementary-lite: #{v.$faded-white}
+				--anti-elementary: #{v.$black}
+				--foreground: #{v.$light-purple}
+				--background: #{v.$dark-purple}
+				--background-lite: #{v.$purple}
 
-			@font-face {
-				font-family: Titan;
-				src: url("/TitanOne-Regular.ttf") format("truetype");
-			}
+			@font-face
+				font-family: Titan
+				src: url("/TitanOne-Regular.ttf") format("truetype")
 
-			body {
-				@include f.flex(column, flex-start, center);
-				background-color: var(--background);
-				font-family: v.$sans-serif;
-				font-size: v.$font--1;
-				line-height: normal;
-				color: var(--elementary);
-			}
+			body
+				+f.flex(column, flex-start, center)
+				background-color: var(--background)
+
+				& *
+					font-family: v.$sans-serif
+					font-size: v.$font--1
+					line-height: normal
+					color: var(--elementary)
 		</style>
 	</body>
 </html>

@@ -1,0 +1,13 @@
+---
+import "./style.sass";
+import SearchBar from "@components/svelte/SearchBar/index.svelte";
+import { blogDetails, websiteURLs } from "@config";
+---
+
+<header>
+	<a href={websiteURLs.current()}>
+		<img src="/favicon.gif" alt="logo" width="64" height="64" />
+		<span>{blogDetails.name}</span>
+	</a>
+	<SearchBar client:idle />
+</header>

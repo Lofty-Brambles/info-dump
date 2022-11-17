@@ -1,0 +1,28 @@
+@use "src/lib/util/func" as f
+@use "src/lib/util/vars" as v
+
+button
+	padding: 0.6rem 1rem
+	border: 2px solid var(--elementary-lite)
+	border-radius: 0.5rem
+
+	background-color: var(--foreground)
+	font-family: v.$titan
+	font-size: 1rem
+
+	white-space: nowrap
+	user-select: none
+	touch-action: manipulation
+
+	&:hover,
+	&:focus
+		outline: none
+		border-color: var(--elementary)
+		box-shadow: var(--elementary-lite) 0px 0.25rem 0.75rem
+
+	&.search-button
+		position: absolute
+		left: calc(100% - 3rem)
+		top: 0.125rem
+		+f.flex($g: 0.25rem)
+		align-self: center

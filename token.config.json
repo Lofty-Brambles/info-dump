@@ -1,4 +1,0 @@
-{
-	"$schema": "https://tokencss.com/schema@0.0.1",
-	"extends": ["@tokencss/core/preset"]
-}

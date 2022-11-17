@@ -1,0 +1,32 @@
+@use "src/lib/util/func" as f
+@use "src/lib/util/vars" as v
+
+footer
+	position: relative
+	width: calc(100% - 4rem)
+
+	margin: 2rem
+	padding: 1.5rem
+	border: 1px var(--elementary) solid
+	border-radius: 0.5rem
+
+	+f.flex($jc: flex-start, $wrp: wrap, $g: 1.5rem)
+	background-color: var(--background-lite)
+
+	+f.deferred-bg()
+
+	& *
+		@include f.flex($g: 1rem)
+		line-height: normal
+
+	& a, & a *
+		color: #00f
+		text-decoration: none
+
+		&:hover
+			text-decoration: underline
+
+	@include f.mq(sm, max)
+		footer
+			width: calc(100% - 2rem)
+			margin: 0 1rem 2rem 1rem

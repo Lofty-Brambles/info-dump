@@ -1,7 +1,7 @@
 ---
 import PostLayout from "@layouts/PostLayout.astro";
-import Pills from "@components/astro/Pills.astro";
-import HeadTag from "@components/astro/HeadTag.astro";
+import Pills from "@components/astro/Pills/index.astro";
+import HeadTag from "@components/astro/HeadTag/index.astro";
 
 import { getPostUrl } from "@lib/scripts/resolve-url";
 import type { Post } from "@lib/types/Post";
@@ -25,31 +25,19 @@ const post: Post = Astro.props.post;
 	<main class="md"><post.Content /></main>
 </PostLayout>
 
-<style lang="scss">
-	@use "src/lib/util/vars" as v;
-	@use "src/lib/util/func" as f;
+<style lang="sass">
+	@use "src/lib/util/func" as f
 
 	main,
-	div {
-		box-sizing: border-box;
-		width: 100%;
-		max-width: 80ch;
-		padding: 1rem;
-	}
+	div
+		box-sizing: border-box
+		width: 100%
+		max-width: 80ch
 
-	@include f.mq(sm) {
-		main,
-		div {
-			padding: 2rem;
-		}
-	}
+	div
+		padding: 0 2rem
+		+f.flex(column)
 
-	div {
-		padding-bottom: 0;
-		@include f.flex(column);
-	}
-	main {
-		padding-top: 0;
-		font-family: v.$sans-serif;
-	}
+	main
+		padding: 0 2rem 2rem 2rem
 </style>

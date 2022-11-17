@@ -1,0 +1,11 @@
+---
+import "./style.sass";
+
+interface Props {
+	list: string[];
+}
+
+const { list } = Astro.props;
+---
+
+<ul class="pills">{list.map(v => <li>{v}</li>)}</ul>

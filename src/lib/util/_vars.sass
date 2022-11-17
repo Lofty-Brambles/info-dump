@@ -1,0 +1,41 @@
+@use "sass:math"
+
+// Grid breakpoints
+
+$breakpoints: ( sm: 385px, smx: 500px, md: 670px, lg: 992px, xl: 1400px )
+
+// Typography variables
+
+$sans-serif: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif
+$serif: Iowan Old Style, Apple Garamond, Baskerville, Times New Roman, Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol
+$mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace
+$titan: "Titan", cursive
+
+$font--2: clamp(0.91rem, calc(0.89rem + 0.10vw), 0.96rem)
+$font--1: clamp(1.09rem, calc(1.05rem + 0.21vw), 1.20rem)
+$font-0: clamp(1.31rem, calc(1.24rem + 0.37vw), 1.50rem)
+$font-1: clamp(1.58rem, calc(1.46rem + 0.59vw), 1.88rem)
+$font-2: clamp(1.89rem, calc(1.71rem + 0.89vw), 2.34rem)
+$font-3: clamp(2.27rem, calc(2.01rem + 1.29vw), 2.93rem)
+
+$line-height: 1.625
+
+// colors
+
+$white: #f1f5f7
+$black: #111827
+$faded-black: rgba(0, 0, 0, 0.4)
+$faded-white: rgba(256, 256, 256, 0.4)
+
+$light-purple: #583599
+$purple: #27184d
+$dark-purple: #150a33
+
+$lightest-blue: #5b92f8
+$light-blue: #1f6feb
+$blue: #375ca9
+$dark-blue: #00263a
+
+$lightest-cyan: #e9f5ed
+$light-cyan: #d8e4dc
+$cyan: #2ecf75

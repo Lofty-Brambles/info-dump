@@ -1,0 +1,39 @@
+@use "src/lib/util/vars" as v
+@use "src/lib/util/keyframes" as k
+
+=mq($name, $type: min)
+	$min: map-get($map: v.$breakpoints, $key: $name)
+
+	@if $min
+		@media (#{$type}-width: $min)
+			@content
+
+	@else
+		@content
+
+=flex($dir: row, $jc: center, $ai: center, $wrp: nowrap, $g: false)
+	display: flex
+	flex-flow: $dir $wrp
+	justify-content: $jc
+	align-items: $ai
+
+	@if $g
+		gap: $g
+
+=box($width, $height: $width)
+	box-sizing: border-box
+	width: $width
+	height: $height
+
+=deferred-bg()
+	&::after
+		content: ""
+		position: absolute
+		left: 0.25rem
+		top: 0.25rem
+		z-index: -1
+
+		width: 100%
+		height: 100%
+		border-radius: 0.5rem
+		background-color: var(--elementary)

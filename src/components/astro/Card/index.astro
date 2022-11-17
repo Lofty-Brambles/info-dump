@@ -1,0 +1,29 @@
+---
+import "./style.sass";
+import Pills from "@components/astro/Pills/index.astro";
+import { UnixToGeneric } from "@lib/scripts/date-manager";
+import { getPostUrl } from "@lib/scripts/resolve-url";
+import type { Post } from "@lib/types/Post";
+
+interface Props {
+	item: Post;
+}
+
+const { item } = Astro.props;
+const inf = item.frontmatter;
+const wholeDate = UnixToGeneric(inf.published).whole();
+---
+
+<li>
+	<a href={getPostUrl(item)} data-test={getPostUrl(item, { onlyEnds: true })}>
+		<figure>
+			<figcaption>
+				<Pills list={inf.tags} />
+				<h2>{inf.title}</h2>
+				<time class="date" set:html={wholeDate} />
+				<p>{inf.description}</p>
+			</figcaption>
+			<img src={inf.cover.url} alt={inf.cover.alt} loading="lazy" />
+		</figure>
+	</a>
+</li>

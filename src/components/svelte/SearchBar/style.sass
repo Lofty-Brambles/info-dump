@@ -1,0 +1,22 @@
+@use "src/lib/util/func" as f
+
+form.search-bar
+	position: relative
+	flex-grow: 1
+	margin: 0.5rem 4rem 0.5rem 1rem
+
+	height: 3rem
+	border: 1px solid var(--elementary)
+	background-color: inherit
+
+	&:has(input:focus)
+		outline: 0.125rem solid var(--elementary)
+
+	input
+		margin: 0 3.5rem 0 0.5rem
+		+f.box(calc(100% - 3.75rem), 100%)
+		border: none
+
+		background-color: inherit
+		font-size: 1.2rem
+		outline: none
